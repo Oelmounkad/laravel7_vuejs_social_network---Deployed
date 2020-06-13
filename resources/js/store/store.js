@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
+baseUrl = process.env.APP_URL || "http://127.0.0.1:8000";
 
 Vue.use(Vuex);
 
@@ -18,10 +19,10 @@ export const store = new Vuex.Store({
             state.posts = payload.data
         }
 
-    },//http://127.0.0.1:8000/
+    },
     actions: {
         fetchAllPosts: (context) => {
-          axios.get("http://desolate-lowlands-42602.herokuapp.com/posts")
+          axios.get(this.baseUrl+"/posts")
           .then(res =>  {
               context.commit('updatePosts',res)
               console.log("here's the posts")
@@ -31,7 +32,7 @@ export const store = new Vuex.Store({
       
         },
         postComment: (context,payload) => {
-            axios.post('http://desolate-lowlands-42602.herokuapp.com/comments', {
+            axios.post(this.baseUrl+'/comments', {
                 post_id : payload.post,
                 user_id : payload.user,
                 body : payload.comment
@@ -42,13 +43,13 @@ export const store = new Vuex.Store({
             
         },
         deletePost : (context,payload) => {
-            axios.delete('http://desolate-lowlands-42602.herokuapp.com/posts/'+ payload)
+            axios.delete(this.baseUrl+'/posts/'+ payload)
             .then(res => {
                 context.dispatch('fetchAllPosts')
             })
         },
         postPost : (context,payload) => {
-            axios.post('http://desolate-lowlands-42602.herokuapp.com/posts', {
+            axios.post(this.baseUrl+'/posts', {
                 user_id: payload.user,
                 title: payload.title,
                 body: payload.body
