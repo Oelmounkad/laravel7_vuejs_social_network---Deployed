@@ -18,10 +18,10 @@ export const store = new Vuex.Store({
             state.posts = payload.data
         }
 
-    },
+    },//http://127.0.0.1:8000/
     actions: {
         fetchAllPosts: (context) => {
-          axios.get("http://127.0.0.1:8000/posts")
+          axios.get("http://desolate-lowlands-42602.herokuapp.com/posts")
           .then(res =>  {
               context.commit('updatePosts',res)
               console.log("here's the posts")
@@ -31,7 +31,7 @@ export const store = new Vuex.Store({
       
         },
         postComment: (context,payload) => {
-            axios.post('http://127.0.0.1:8000/comments', {
+            axios.post('http://desolate-lowlands-42602.herokuapp.com/comments', {
                 post_id : payload.post,
                 user_id : payload.user,
                 body : payload.comment
@@ -42,13 +42,13 @@ export const store = new Vuex.Store({
             
         },
         deletePost : (context,payload) => {
-            axios.delete('http://127.0.0.1:8000/posts/'+ payload)
+            axios.delete('http://desolate-lowlands-42602.herokuapp.com/posts/'+ payload)
             .then(res => {
                 context.dispatch('fetchAllPosts')
             })
         },
         postPost : (context,payload) => {
-            axios.post('http://127.0.0.1:8000/posts', {
+            axios.post('http://desolate-lowlands-42602.herokuapp.com/posts', {
                 user_id: payload.user,
                 title: payload.title,
                 body: payload.body
