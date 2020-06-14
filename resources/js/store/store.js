@@ -22,7 +22,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         fetchAllPosts: (context) => {
-          axios.get(process.env.VUE_APP_URL+"/posts")
+          axios.get(process.env.NUE_APP_URL+"/posts")
           .then(res =>  {
               context.commit('updatePosts',res)
               console.log("here's the posts")
@@ -32,7 +32,7 @@ export const store = new Vuex.Store({
       
         },
         postComment: (context,payload) => {
-            axios.post(process.env.VUE_APP_URL+'/comments', {
+            axios.post(process.env.NUE_APP_URL+'/comments', {
                 post_id : payload.post,
                 user_id : payload.user,
                 body : payload.comment
@@ -43,13 +43,13 @@ export const store = new Vuex.Store({
             
         },
         deletePost : (context,payload) => {
-            axios.delete(process.env.VUE_APP_URL+'/posts/'+ payload)
+            axios.delete(process.env.NUE_APP_URL+'/posts/'+ payload)
             .then(res => {
                 context.dispatch('fetchAllPosts')
             })
         },
         postPost : (context,payload) => {
-            axios.post(process.env.VUE_APP_URL+'/posts', {
+            axios.post(process.env.NUE_APP_URL+'/posts', {
                 user_id: payload.user,
                 title: payload.title,
                 body: payload.body
