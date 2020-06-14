@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
-let baseUrl = process.env.APP_URL || "http://127.0.0.1:8000";
+let baseUrl = process.env.VUE_APP_URL || "http://127.0.0.1:8000";
 
 Vue.use(Vuex);
 
