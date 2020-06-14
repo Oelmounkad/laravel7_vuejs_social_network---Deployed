@@ -1,6 +1,6 @@
 <template>
        <!-- Comments Form -->
-        <div class="card my-4">
+        <div class="col-md-12 card my-4">
           <h5 class="card-header">What's on your mind ?</h5>
           <div class="card-body">
            

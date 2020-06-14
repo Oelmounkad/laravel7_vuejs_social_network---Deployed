@@ -38640,7 +38640,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card my-4" }, [
+  return _c("div", { staticClass: "col-md-12 card my-4" }, [
     _c("h5", { staticClass: "card-header" }, [_vm._v("What's on your mind ?")]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
@@ -38849,7 +38849,7 @@ var render = function() {
         _vm._l(_vm.posts, function(post) {
           return _c(
             "div",
-            { key: post.id, staticClass: "col-lg-8 bg-white mt-3" },
+            { key: post.id, staticClass: "col-md-12 bg-white mt-3" },
             [
               _c(
                 "button",

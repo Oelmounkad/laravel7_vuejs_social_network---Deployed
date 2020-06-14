@@ -8,7 +8,7 @@
     <div class="row">
 
       <!-- Post Content Column -->
-      <div class="col-lg-8 bg-white mt-3" v-for="post in posts" :key="post.id">
+      <div class="col-md-12 bg-white mt-3" v-for="post in posts" :key="post.id">
 
 <button type="button" @click="deletePost(post.id)" class="btn btn-danger">Delete</button>
         <!-- Title -->
