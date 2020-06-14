@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
-baseUrl = process.env.APP_URL || "http://127.0.0.1:8000";
+let baseUrl = process.env.APP_URL || "http://127.0.0.1:8000";
 
 Vue.use(Vuex);
 
@@ -22,7 +22,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         fetchAllPosts: (context) => {
-          axios.get(this.baseUrl+"/posts")
+          axios.get(baseUrl+"/posts")
           .then(res =>  {
               context.commit('updatePosts',res)
               console.log("here's the posts")
@@ -32,7 +32,7 @@ export const store = new Vuex.Store({
       
         },
         postComment: (context,payload) => {
-            axios.post(this.baseUrl+'/comments', {
+            axios.post(baseUrl+'/comments', {
                 post_id : payload.post,
                 user_id : payload.user,
                 body : payload.comment
@@ -43,13 +43,13 @@ export const store = new Vuex.Store({
             
         },
         deletePost : (context,payload) => {
-            axios.delete(this.baseUrl+'/posts/'+ payload)
+            axios.delete(baseUrl+'/posts/'+ payload)
             .then(res => {
                 context.dispatch('fetchAllPosts')
             })
         },
         postPost : (context,payload) => {
-            axios.post(this.baseUrl+'/posts', {
+            axios.post(baseUrl+'/posts', {
                 user_id: payload.user,
                 title: payload.title,
                 body: payload.body

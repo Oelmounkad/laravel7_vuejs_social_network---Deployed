@@ -98774,7 +98774,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "store", function() { return store; });
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "store", function() { return store; });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
@@ -98783,6 +98783,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var baseUrl = process.env.APP_URL || "http://127.0.0.1:8000";
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
@@ -98799,7 +98800,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   },
   actions: {
     fetchAllPosts: function fetchAllPosts(context) {
-      axios.get("http://127.0.0.1:8000/posts").then(function (res) {
+      axios.get(baseUrl + "/posts").then(function (res) {
         context.commit('updatePosts', res);
         console.log("here's the posts");
         console.log(res.data);
@@ -98808,7 +98809,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       });
     },
     postComment: function postComment(context, payload) {
-      axios.post('http://127.0.0.1:8000/comments', {
+      axios.post(baseUrl + '/comments', {
         post_id: payload.post,
         user_id: payload.user,
         body: payload.comment
@@ -98819,12 +98820,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       });
     },
     deletePost: function deletePost(context, payload) {
-      axios["delete"]('http://127.0.0.1:8000/posts/' + payload).then(function (res) {
+      axios["delete"](baseUrl + '/posts/' + payload).then(function (res) {
         context.dispatch('fetchAllPosts');
       });
     },
     postPost: function postPost(context, payload) {
-      axios.post('http://127.0.0.1:8000/posts', {
+      axios.post(baseUrl + '/posts', {
         user_id: payload.user,
         title: payload.title,
         body: payload.body
@@ -98834,6 +98835,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     }
   }
 });
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
