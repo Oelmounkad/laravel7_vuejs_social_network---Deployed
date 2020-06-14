@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
-let baseUrl = 'http://desolate-lowlands-42602.herokuapp.com'
+let baseUrl = process.env.APP_URL || "http://127.0.0.1:8000";
 
 Vue.use(Vuex);
 
