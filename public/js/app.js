@@ -98800,7 +98800,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   },
   actions: {
     fetchAllPosts: function fetchAllPosts(context) {
-      axios.get(process.env.NUE_APP_URL + "/posts").then(function (res) {
+      axios.get('http://desolate-lowlands-42602.herokuapp.com' + "/posts").then(function (res) {
         context.commit('updatePosts', res);
         console.log("here's the posts");
         console.log(res.data);
@@ -98809,7 +98809,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       });
     },
     postComment: function postComment(context, payload) {
-      axios.post(process.env.NUE_APP_URL + '/comments', {
+      axios.post('http://desolate-lowlands-42602.herokuapp.com' + '/comments', {
         post_id: payload.post,
         user_id: payload.user,
         body: payload.comment
@@ -98820,12 +98820,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       });
     },
     deletePost: function deletePost(context, payload) {
-      axios["delete"](process.env.NUE_APP_URL + '/posts/' + payload).then(function (res) {
+      axios["delete"]('http://desolate-lowlands-42602.herokuapp.com' + '/posts/' + payload).then(function (res) {
         context.dispatch('fetchAllPosts');
       });
     },
     postPost: function postPost(context, payload) {
-      axios.post(process.env.NUE_APP_URL + '/posts', {
+      axios.post('http://desolate-lowlands-42602.herokuapp.com' + '/posts', {
         user_id: payload.user,
         title: payload.title,
         body: payload.body
