@@ -5,7 +5,7 @@
   <div class="container">
 <div class="row">
   <div class="col-md-4">
-    <p>1</p>
+    <p>here profile ?</p>
   </div>
    <div class="col-md-4">
     <addpost-component v-bind:user-auth="userAuth">  </addpost-component>
