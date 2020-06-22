@@ -2230,11 +2230,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userAuth'],
   data: function data() {
     return {
-      comm: ''
+      comm: '',
+      alert: false
     };
   },
   computed: {
@@ -2247,7 +2266,13 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.dispatch('postComment', comm);
     },
     deletePost: function deletePost(id) {
+      var _this = this;
+
       this.$store.dispatch('deletePost', id);
+      this.alert = true;
+      setInterval(function () {
+        return _this.alert = false;
+      }, 2000);
     }
   },
   created: function created() {
@@ -38655,7 +38680,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { rows: "3" },
+          attrs: { placeholder: "Post title", rows: "3" },
           domProps: { value: _vm.postTitle },
           on: {
             input: function($event) {
@@ -38677,7 +38702,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { rows: "3" },
+          attrs: { placeholder: "Post body", rows: "3" },
           domProps: { value: _vm.postBody },
           on: {
             input: function($event) {
@@ -38836,122 +38861,159 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        { staticClass: "row" },
-        [_c("addpost-component", { attrs: { "user-auth": _vm.userAuth } })],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row" },
-        _vm._l(_vm.posts, function(post) {
-          return _c(
-            "div",
-            { key: post.id, staticClass: "col-md-12 bg-white mt-3" },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-danger",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.deletePost(post.id)
-                    }
-                  }
-                },
-                [_vm._v("Delete")]
-              ),
-              _vm._v(" "),
-              _c("h1", { staticClass: "mt-4" }, [_vm._v(_vm._s(post.title))]),
-              _vm._v(" "),
-              _c("p", { staticClass: "lead" }, [
-                _vm._v("\r\n          by\r\n          "),
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(_vm._s(post.user.name))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
-              _c("p", [_vm._v("Posted on " + _vm._s(post.created_at))]),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
-              _c("p", { staticClass: "lead" }, [_vm._v(_vm._s(post.body))]),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
-              _vm._l(post.comments, function(comment) {
-                return _c(
-                  "div",
-                  { key: comment.id, staticClass: "media mb-4" },
-                  [
-                    _c("img", {
-                      staticClass: "d-flex mr-3 rounded-circle",
-                      attrs: { src: "http://placehold.it/50x50", alt: "" }
-                    }),
-                    _vm._v(" "),
-                    _c(
+      _c("div", { staticClass: "row" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-md-4" },
+          [
+            _c("addpost-component", { attrs: { "user-auth": _vm.userAuth } }),
+            _vm._v(" "),
+            _vm._l(_vm.posts, function(post) {
+              return _c(
+                "div",
+                { key: post.id, staticClass: "col-md-12 bg-white mt-3" },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deletePost(post.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Delete")]
+                  ),
+                  _vm._v(" "),
+                  _c("h1", { staticClass: "mt-4" }, [
+                    _vm._v(_vm._s(post.title))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "lead" }, [
+                    _vm._v("\r\n          by\r\n          "),
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v(_vm._s(post.user.name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Posted on " + _vm._s(post.created_at))]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "lead" }, [_vm._v(_vm._s(post.body))]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _vm._l(post.comments, function(comment) {
+                    return _c(
                       "div",
-                      { staticClass: "media-body" },
+                      { key: comment.id, staticClass: "media mb-4" },
                       [
-                        _c("h5", { staticClass: "mt-0" }, [
-                          _vm._v(_vm._s(comment.user.name))
-                        ]),
-                        _vm._v(
-                          "\r\n           " +
-                            _vm._s(comment.body) +
-                            "\r\n\r\n            "
-                        ),
-                        _vm._l(comment.replies, function(reply) {
-                          return _c(
-                            "div",
-                            { key: reply.id, staticClass: "media mt-4" },
-                            [
-                              _c("img", {
-                                staticClass: "d-flex mr-3 rounded-circle",
-                                attrs: {
-                                  src: "http://placehold.it/50x50",
-                                  alt: ""
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "media-body" }, [
-                                _c("h5", { staticClass: "mt-0" }, [
-                                  _vm._v(_vm._s(reply.user.name))
-                                ]),
-                                _vm._v(
-                                  "\r\n                " +
-                                    _vm._s(reply.body) +
-                                    "\r\n                "
-                                )
-                              ])
-                            ]
-                          )
-                        })
-                      ],
-                      2
+                        _c("img", {
+                          staticClass: "d-flex mr-3 rounded-circle",
+                          attrs: { src: "http://placehold.it/50x50", alt: "" }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "media-body" },
+                          [
+                            _c("h5", { staticClass: "mt-0" }, [
+                              _vm._v(_vm._s(comment.user.name))
+                            ]),
+                            _vm._v(
+                              "\r\n           " +
+                                _vm._s(comment.body) +
+                                "\r\n\r\n            "
+                            ),
+                            _vm._l(comment.replies, function(reply) {
+                              return _c(
+                                "div",
+                                { key: reply.id, staticClass: "media mt-4" },
+                                [
+                                  _c("img", {
+                                    staticClass: "d-flex mr-3 rounded-circle",
+                                    attrs: {
+                                      src: "http://placehold.it/50x50",
+                                      alt: ""
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "media-body" }, [
+                                    _c("h5", { staticClass: "mt-0" }, [
+                                      _vm._v(_vm._s(reply.user.name))
+                                    ]),
+                                    _vm._v(
+                                      "\r\n                " +
+                                        _vm._s(reply.body) +
+                                        "\r\n                "
+                                    )
+                                  ])
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]
                     )
-                  ]
-                )
-              }),
-              _vm._v(" "),
-              _c("addcomment-component", {
-                attrs: { "user-auth": _vm.userAuth, "post-id": post.id }
-              })
-            ],
-            2
-          )
-        }),
-        0
-      )
+                  }),
+                  _vm._v(" "),
+                  _c("addcomment-component", {
+                    attrs: { "user-auth": _vm.userAuth, "post-id": post.id }
+                  })
+                ],
+                2
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-md-4" },
+          [
+            _c(
+              "v-alert",
+              {
+                attrs: {
+                  border: "left",
+                  "close-text": "Close Alert",
+                  color: "red",
+                  dismissible: ""
+                },
+                model: {
+                  value: _vm.alert,
+                  callback: function($$v) {
+                    _vm.alert = $$v
+                  },
+                  expression: "alert"
+                }
+              },
+              [_vm._v("\r\n   Post deleted !\r\n    ")]
+            )
+          ],
+          1
+        )
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [_c("p", [_vm._v("1")])])
+  }
+]
 render._withStripped = true
 
 
@@ -98783,7 +98845,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var baseUrl = process.env.VUE_APP_URL || "http://127.0.0.1:8000";
+var baseUrl = process.env.VUE_APP_URL || "http://desolate-lowlands-42602.herokuapp.com";
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
@@ -98794,13 +98856,25 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     updatePosts: function updatePosts(state, payload) {
       state.posts = payload.data;
     },
-    refreshPosts: function refreshPosts(state, payload) {
-      state.posts = payload.data;
+    addNewPost: function addNewPost(state, payload) {
+      state.posts.unshift(payload);
+    },
+    addCommentToPost: function addCommentToPost(state, payload) {
+      var index = 0;
+
+      for (var i = 0; i < state.posts.length; i += 1) {
+        if (state.posts[i]['id'] === payload.post_id) {
+          index = i;
+        }
+      }
+
+      console.log('index is : ' + index);
+      state.posts[index].comments.unshift(payload);
     }
   },
   actions: {
     fetchAllPosts: function fetchAllPosts(context) {
-      axios.get('http://desolate-lowlands-42602.herokuapp.com' + "/posts").then(function (res) {
+      axios.get('http://127.0.0.1:8000' + "/posts").then(function (res) {
         context.commit('updatePosts', res);
         console.log("here's the posts");
         console.log(res.data);
@@ -98809,28 +98883,29 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       });
     },
     postComment: function postComment(context, payload) {
-      axios.post('http://desolate-lowlands-42602.herokuapp.com' + '/comments', {
+      axios.post('http://127.0.0.1:8000' + '/comments', {
         post_id: payload.post,
         user_id: payload.user,
         body: payload.comment
       }).then(function (res) {
-        context.dispatch('fetchAllPosts');
+        context.commit('addCommentToPost', res.data);
       })["catch"](function (error) {
         return console.log(error.message);
       });
     },
     deletePost: function deletePost(context, payload) {
-      axios["delete"]('http://desolate-lowlands-42602.herokuapp.com' + '/posts/' + payload).then(function (res) {
+      axios["delete"]('http://127.0.0.1:8000' + '/posts/' + payload).then(function (res) {
         context.dispatch('fetchAllPosts');
       });
     },
     postPost: function postPost(context, payload) {
-      axios.post('http://desolate-lowlands-42602.herokuapp.com' + '/posts', {
+      axios.post('http://127.0.0.1:8000' + '/posts', {
         user_id: payload.user,
         title: payload.title,
         body: payload.body
       }).then(function (res) {
-        context.dispatch('fetchAllPosts');
+        console.log('New post returned: ' + res);
+        context.commit('addNewPost', res.data);
       });
     }
   }

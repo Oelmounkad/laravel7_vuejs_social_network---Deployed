@@ -25,6 +25,8 @@ return response()->json($comments);
     public function store(Request $request)
     {
     $comment=  Comment::create($request->all());
+    $commentt = Comment::findOrFail($comment->id);
+    return response()->json($commentt);
  
     }
     public function show($id)

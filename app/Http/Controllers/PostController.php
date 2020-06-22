@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user','comments')->orderBy('id','DESC')->get();
+        $posts = Post::orderBy('id','DESC')->get();
         return response()->json($posts);
     }
 
@@ -37,6 +37,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
        $post =  Post::create($request->all());
+       $postt = Post::findOrFail($post->id);
+       return response()->json($postt);
     }
 
     /**

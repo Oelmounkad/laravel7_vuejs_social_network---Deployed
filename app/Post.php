@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
+    protected $with = ['user','comments'];
     protected $fillable = ['user_id','title','body'];
     public function comments()
     {

@@ -5,8 +5,8 @@
           <div class="card-body">
            
               <div class="form-group">
-                <textarea class="form-control" rows="3" v-model="postTitle"></textarea>
-                <textarea class="form-control" rows="3" v-model="postBody"></textarea>
+                <textarea class="form-control" placeholder="Post title" rows="3" v-model="postTitle"></textarea>
+                <textarea class="form-control" placeholder="Post body" rows="3" v-model="postBody"></textarea>
                 <input type="text" style="display:none" v-model="userAuth.id" >
               </div>
               <button @click="postPost" class="btn btn-primary">Post</button>

@@ -1,11 +1,15 @@
 <template>
 <div>
+
+
   <div class="container">
 <div class="row">
-  <addpost-component v-bind:user-auth="userAuth">  </addpost-component>
-
-</div>
-    <div class="row">
+  <div class="col-md-4">
+    <p>1</p>
+  </div>
+   <div class="col-md-4">
+    <addpost-component v-bind:user-auth="userAuth">  </addpost-component>
+      
 
       <!-- Post Content Column -->
       <div class="col-md-12 bg-white mt-3" v-for="post in posts" :key="post.id">
@@ -60,7 +64,21 @@
 
 
 </div>
-    </div></div> </div>
+    
+  </div>
+    <div class="col-md-4">
+    <v-alert
+      v-model="alert"
+      border="left"
+      close-text="Close Alert"
+      color="red"
+      dismissible
+    >
+   Post deleted !
+    </v-alert>
+  </div>
+</div>
+</div> </div>
 </template>
 
 <script>
@@ -71,7 +89,8 @@
   
   data() {
     return {
-  comm: ''
+  comm: '',
+   alert: false,  
     }
   },
 
@@ -86,7 +105,10 @@ this.$store.dispatch('postComment',comm);
 
                   },
                   deletePost(id){
-this.$store.dispatch('deletePost',id)
+this.$store.dispatch('deletePost',id);
+this.alert = true;
+setInterval(() => this.alert = false ,2000)
+
                   }
     },
 
