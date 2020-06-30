@@ -37,7 +37,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         fetchAllPosts: (context) => {
-          axios.get('http://immense-mesa-05107.herokuapp.com'+"/posts")
+          axios.get('http://immense-mesa-05107.herokuapp.com/posts')
           .then(res =>  {
               context.commit('updatePosts',res)
               console.log("here's the posts")
