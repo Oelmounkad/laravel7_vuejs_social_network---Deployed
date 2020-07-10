@@ -70,7 +70,7 @@ export const store = new Vuex.Store({
                 body: payload.body
             })
             .then( (res) => {
-                console.log('New post returned: '+res)
+                console.log('New post returned: '+res.data)
                 context.commit('addNewPost',res.data);
             } )
         }
