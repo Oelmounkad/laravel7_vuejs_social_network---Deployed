@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
-
+const endpoint = process.VUE_APP || 'http://127.0.0.1:8000'
 
 Vue.use(Vuex);
 
@@ -37,7 +37,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         fetchAllPosts: (context) => {
-          axios.get('http://127.0.0.1:8000'+"/posts")
+          axios.get(endpoint+"/posts")
           .then(res =>  {
               context.commit('updatePosts',res)
               console.log("here's the posts")
@@ -47,7 +47,7 @@ export const store = new Vuex.Store({
       
         },
         postComment: (context,payload) => {
-            axios.post('http://127.0.0.1:8000'+'/comments', {
+            axios.post(endpoint+'/comments', {
                 post_id : payload.post,
                 user_id : payload.user,
                 body : payload.comment
@@ -58,13 +58,13 @@ export const store = new Vuex.Store({
             
         },
         deletePost : (context,payload) => {
-            axios.delete('http://127.0.0.1:8000'+'/posts/'+ payload)
+            axios.delete(endpoint+'/posts/'+ payload)
             .then(res => {
                 context.dispatch('fetchAllPosts')
             })
         },
         postPost : (context,payload) => {
-            axios.post('http://127.0.0.1:8000'+'/posts', {
+            axios.post(endpoint+'/posts', {
                 user_id: payload.user,
                 title: payload.title,
                 body: payload.body

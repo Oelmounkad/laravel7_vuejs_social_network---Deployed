@@ -98845,7 +98845,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var baseUrl = process.env.VUE_APP_URL || "http://desolate-lowlands-42602.herokuapp.com";
+var endpoint = process.VUE_APP || 'http://127.0.0.1:8000';
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
@@ -98874,7 +98874,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   },
   actions: {
     fetchAllPosts: function fetchAllPosts(context) {
-      axios.get('http://127.0.0.1:8000' + "/posts").then(function (res) {
+      axios.get(endpoint + "/posts").then(function (res) {
         context.commit('updatePosts', res);
         console.log("here's the posts");
         console.log(res.data);
@@ -98883,7 +98883,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       });
     },
     postComment: function postComment(context, payload) {
-      axios.post('http://127.0.0.1:8000' + '/comments', {
+      axios.post(endpoint + '/comments', {
         post_id: payload.post,
         user_id: payload.user,
         body: payload.comment
@@ -98894,12 +98894,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       });
     },
     deletePost: function deletePost(context, payload) {
-      axios["delete"]('http://127.0.0.1:8000' + '/posts/' + payload).then(function (res) {
+      axios["delete"](endpoint + '/posts/' + payload).then(function (res) {
         context.dispatch('fetchAllPosts');
       });
     },
     postPost: function postPost(context, payload) {
-      axios.post('http://127.0.0.1:8000' + '/posts', {
+      axios.post(endpoint + '/posts', {
         user_id: payload.user,
         title: payload.title,
         body: payload.body
@@ -98964,8 +98964,8 @@ var opts = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Oussama\Desktop\laravel projects\myblog\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Oussama\Desktop\laravel projects\myblog\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Oussama\Desktop\All Web Development\laravel projects\myblog\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Oussama\Desktop\All Web Development\laravel projects\myblog\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
