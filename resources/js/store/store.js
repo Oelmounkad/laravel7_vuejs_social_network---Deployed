@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
-const endpoint = 'http://pure-mountain-70378.herokuapp.com/'
+const endpoint = 'http://pure-mountain-70378.herokuapp.com'
 
 Vue.use(Vuex);
 
