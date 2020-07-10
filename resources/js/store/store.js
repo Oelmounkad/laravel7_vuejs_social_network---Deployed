@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
-const endpoint = process.env.VUE_APP || 'http://127.0.0.1:8000'
+const endpoint = 'http://pure-mountain-70378.herokuapp.com/'
 
 Vue.use(Vuex);
 
