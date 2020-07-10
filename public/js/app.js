@@ -98845,7 +98845,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var endpoint = process.VUE_APP || 'http://127.0.0.1:8000';
+var endpoint = process.env.VUE_APP || 'http://127.0.0.1:8000';
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
