@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
-const endpoint = process.env.VUE_APP || 'http://127.0.0.1:8000'
+const endpoint = process.env.VUE_APP || 'http://127f.0.0.1:8000'
 
 Vue.use(Vuex);
 
