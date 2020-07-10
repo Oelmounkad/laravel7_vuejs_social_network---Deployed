@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 
-const endpoint = process.env.APP_URL;
+//const endpoint = process.env.APP_URL;
 
 Vue.use(Vuex);
 
@@ -37,7 +37,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         fetchAllPosts: (context) => {
-          axios.get(endpoint+"/posts")
+          axios.get("/posts")
           .then(res =>  {
               context.commit('updatePosts',res)
               console.log("here's the posts")
@@ -47,7 +47,7 @@ export const store = new Vuex.Store({
       
         },
         postComment: (context,payload) => {
-            axios.post(endpoint+'/comments', {
+            axios.post('/comments', {
                 post_id : payload.post,
                 user_id : payload.user,
                 body : payload.comment
@@ -58,13 +58,13 @@ export const store = new Vuex.Store({
             
         },
         deletePost : (context,payload) => {
-            axios.delete(endpoint+'/posts/'+ payload)
+            axios.delete('/posts/'+ payload)
             .then(res => {
                 context.dispatch('fetchAllPosts')
             })
         },
         postPost : (context,payload) => {
-            axios.post(endpoint+'/posts', {
+            axios.post('/posts', {
                 user_id: payload.user,
                 title: payload.title,
                 body: payload.body
